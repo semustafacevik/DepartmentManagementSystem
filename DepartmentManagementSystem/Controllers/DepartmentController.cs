@@ -10,21 +10,18 @@ namespace DepartmentManagementSystem.Controllers
     public class DepartmentController : Controller
     {
         DepartmentManagementDBEntities db = new DepartmentManagementDBEntities();
-
-        // GET: Department
+        
         public ActionResult Index()
         {
             var model = db.tblDepartment.ToList();
             return View(model);
         }
-
-        [HttpGet]
+        
         public ActionResult New()
         {
             return View("DepartmentForm");
         }
-
-
+        
         public ActionResult Save(tblDepartment department)
         {
             if (department.d_ID == 0)

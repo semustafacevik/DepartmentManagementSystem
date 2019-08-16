@@ -18,6 +18,7 @@ namespace DepartmentManagementSystem.Models.EntityFramework
         public DepartmentManagementDBEntities()
             : base("name=DepartmentManagementDBEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

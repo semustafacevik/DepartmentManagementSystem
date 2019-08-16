@@ -19,10 +19,9 @@
           <Property Name="p_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="p_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="p_Salary" Type="money" />
-          <Property Name="p_BirthDate" Type="datetime" />
+          <Property Name="p_Birthdate" Type="datetime" />
           <Property Name="p_Sex" Type="bit" />
           <Property Name="p_IsActive" Type="bit" />
-          <Property Name="p_IsMarried" Type="bit" />
           <Property Name="departmentID" Type="int" />
         </EntityType>
         <Association Name="FK_tblPersonal_tblDepartment">
@@ -57,7 +56,7 @@
           <Property Name="d_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tblPersonnel" Relationship="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1" FromRole="tblDepartment" ToRole="tblPersonnel" />
         </EntityType>
-        <EntityContainer Name="DepartmentManagementDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DepartmentManagementDBEntities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" />
           <EntitySet Name="tblPersonnel" EntityType="DepartmentManagementDBModel.tblPersonnel" />
           <AssociationSet Name="FK_tblPersonal_tblDepartment1" Association="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1">
@@ -72,12 +71,11 @@
           <Property Name="p_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="p_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="p_Salary" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="p_BirthDate" Type="DateTime" Precision="3" />
           <Property Name="p_Sex" Type="Boolean" />
           <Property Name="p_IsActive" Type="Boolean" />
-          <Property Name="p_IsMarried" Type="Boolean" />
           <Property Name="departmentID" Type="Int32" />
           <NavigationProperty Name="tblDepartment" Relationship="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1" FromRole="tblPersonnel" ToRole="tblDepartment" />
+          <Property Name="p_Birthdate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_tblPersonal_tblDepartment1">
           <End Type="DepartmentManagementDBModel.tblDepartment" Role="tblDepartment" Multiplicity="0..1" />
@@ -108,11 +106,10 @@
           <EntitySetMapping Name="tblPersonnel">
             <EntityTypeMapping TypeName="DepartmentManagementDBModel.tblPersonnel">
               <MappingFragment StoreEntitySet="tblPersonnel">
+                <ScalarProperty Name="p_Birthdate" ColumnName="p_Birthdate" />
                 <ScalarProperty Name="departmentID" ColumnName="departmentID" />
-                <ScalarProperty Name="p_IsMarried" ColumnName="p_IsMarried" />
                 <ScalarProperty Name="p_IsActive" ColumnName="p_IsActive" />
                 <ScalarProperty Name="p_Sex" ColumnName="p_Sex" />
-                <ScalarProperty Name="p_BirthDate" ColumnName="p_BirthDate" />
                 <ScalarProperty Name="p_Salary" ColumnName="p_Salary" />
                 <ScalarProperty Name="p_Name" ColumnName="p_Name" />
                 <ScalarProperty Name="p_ID" ColumnName="p_ID" />

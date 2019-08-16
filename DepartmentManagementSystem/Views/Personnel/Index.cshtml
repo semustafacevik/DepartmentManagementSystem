@@ -1,0 +1,38 @@
+﻿@using DepartmentManagementSystem.Models.EntityFramework
+@model IEnumerable<tblPersonnel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Of Personnels</h2>
+<table class="table table-bordered table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personnel in Model)
+        {
+        <tr>
+            <td>@personnel.p_ID</td>
+            <td>@personnel.p_Name</td>
+            <td>@personnel.tblDepartment.d_Name</td>
+            <td>@personnel.p_Salary</td>
+            <td>@(DateTime.Now.Year - personnel.p_Birthdate.Value.Year)</td>
+            <td>@(personnel.p_Sex == true ? "Female" : "Male")</td>
+            <td>@Html.ActionLink("Update", "Update", new { ID = personnel.p_ID }, new { @class = "btn btn-primary" })</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { ID = personnel.p_ID }, new { @class = "btn btn-danger" })</td>
+        </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("New Personnel", "New", null, new { @class = "btn btn-success btn-lg btn-block" })
