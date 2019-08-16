@@ -11,17 +11,37 @@ namespace DepartmentManagementSystem.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblPersonnel
     {
+        
         public int p_ID { get; set; }
+
+        [Display(Name = "Personnel Name")]
+        [Required]
         public string p_Name { get; set; }
+
+        [Display(Name = "Personnel Salary")]
+        [Required]
+        [Range(2000,15000)]
         public Nullable<decimal> p_Salary { get; set; }
-        public Nullable<bool> p_Sex { get; set; }
-        public Nullable<bool> p_IsActive { get; set; }
-        public Nullable<int> departmentID { get; set; }
+
+        [Display(Name = "Personnel Birthdate")]
+        [Required]
         public Nullable<System.DateTime> p_Birthdate { get; set; }
-    
+
+        [Display(Name = "Personnel Gender")]
+        [Required]
+        public Nullable<bool> p_Sex { get; set; }
+
+        [Display(Name = "Personnel Activity Status")]
+        public Nullable<bool> p_IsActive { get; set; }
+
+        [Display(Name = "Department")]
+        [Required]
+        public Nullable<int> departmentID { get; set; }
+        
         public virtual tblDepartment tblDepartment { get; set; }
     }
 }

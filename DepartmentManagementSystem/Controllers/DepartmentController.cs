@@ -19,11 +19,14 @@ namespace DepartmentManagementSystem.Controllers
         
         public ActionResult New()
         {
-            return View("DepartmentForm");
+            return View("DepartmentForm",new tblDepartment());
         }
         
         public ActionResult Save(tblDepartment department)
         {
+            if (!ModelState.IsValid)
+                return View("DepartmentForm");
+
             if (department.d_ID == 0)
                 db.tblDepartment.Add(department);
 

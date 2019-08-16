@@ -11,7 +11,8 @@ namespace DepartmentManagementSystem.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblDepartment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,11 @@ namespace DepartmentManagementSystem.Models.EntityFramework
         {
             this.tblPersonnel = new HashSet<tblPersonnel>();
         }
-    
+        
         public int d_ID { get; set; }
+
+        [Display(Name = "Department Name")]
+        [Required]
         public string d_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -23,7 +23,8 @@ namespace DepartmentManagementSystem.Controllers
         {
             PersonnelFormViewModels vm = new PersonnelFormViewModels()
             {
-                departments = db.tblDepartment.ToList()
+                departments = db.tblDepartment.ToList(),
+                personnel = new tblPersonnel()
             };
 
             return View("PersonnelForm",vm);
@@ -31,6 +32,16 @@ namespace DepartmentManagementSystem.Controllers
 
         public ActionResult Save(tblPersonnel personnel)
         {
+            if (!ModelState.IsValid)
+            {
+                var model = new PersonnelFormViewModels()
+                {
+                    departments = db.tblDepartment.ToList(),
+                    personnel = personnel
+                };
+                return View("PersonnelForm", model);
+
+            }
             if (personnel.p_ID == 0)
                 db.tblPersonnel.Add(personnel);
 

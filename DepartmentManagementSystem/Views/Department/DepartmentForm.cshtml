@@ -9,6 +9,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.d_Name)
         @Html.TextBoxFor(m => m.d_Name , new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.d_Name)
     </div>
     @Html.HiddenFor(m => m.d_ID)
     <button type="submit" class="btn btn-success btn-lg btn-block">Save</button>
