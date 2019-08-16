@@ -22,6 +22,7 @@ namespace DepartmentManagementSystem.Controllers
             return View("DepartmentForm",new tblDepartment());
         }
         
+        [ValidateAntiForgeryToken]
         public ActionResult Save(tblDepartment department)
         {
             if (!ModelState.IsValid)
@@ -50,7 +51,7 @@ namespace DepartmentManagementSystem.Controllers
                 return HttpNotFound();
             return View("DepartmentForm", model);
         }
-
+        
         public ActionResult Delete(int ID)
         {
             var model = db.tblDepartment.Find(ID);

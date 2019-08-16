@@ -30,6 +30,7 @@ namespace DepartmentManagementSystem.Controllers
             return View("PersonnelForm",vm);
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult Save(tblPersonnel personnel)
         {
             if (!ModelState.IsValid)
