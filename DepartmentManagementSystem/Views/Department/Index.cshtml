@@ -1,0 +1,31 @@
+﻿@using DepartmentManagementSystem.Models.EntityFramework;
+@model IEnumerable<tblDepartment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Of Department</h2>
+<table class="table table-bordered" id="tblDepartments">
+    <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.d_ID</td>
+                <td>@department.d_Name</td>
+                <td><a class="btn btn-primary" href="/Department/Update/@department.d_ID">Update</a></td>
+                <td><a class="btn btn-danger" href="/Department/Delete/@department.d_ID">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-success btn-lg btn-block" href="/Department/New">New Department</a>
+

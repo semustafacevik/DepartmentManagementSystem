@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DepartmentManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DepartmentManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblDepartment">
           <Key>
             <PropertyRef Name="d_ID" />
           </Key>
-          <Property Name="d_ID" Type="int" Nullable="false" />
+          <Property Name="d_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="d_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblPersonal">
+        <EntityType Name="tblPersonnel">
           <Key>
             <PropertyRef Name="p_ID" />
           </Key>
-          <Property Name="p_ID" Type="int" Nullable="false" />
+          <Property Name="p_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="p_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="p_Salary" Type="money" />
           <Property Name="p_BirthDate" Type="datetime" />
@@ -27,26 +27,25 @@
         </EntityType>
         <Association Name="FK_tblPersonal_tblDepartment">
           <End Role="tblDepartment" Type="Self.tblDepartment" Multiplicity="0..1" />
-          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
+          <End Role="tblPersonnel" Type="Self.tblPersonnel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblDepartment">
               <PropertyRef Name="d_ID" />
             </Principal>
-            <Dependent Role="tblPersonal">
+            <Dependent Role="tblPersonnel">
               <PropertyRef Name="departmentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DepartmentManagementDBModelStoreContainer">
           <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblPersonal" EntityType="Self.tblPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPersonnel" EntityType="Self.tblPersonnel" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tblPersonal_tblDepartment" Association="Self.FK_tblPersonal_tblDepartment">
             <End Role="tblDepartment" EntitySet="tblDepartment" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblPersonnel" EntitySet="tblPersonnel" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DepartmentManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -56,42 +55,42 @@
           </Key>
           <Property Name="d_ID" Type="Int32" Nullable="false" />
           <Property Name="d_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblPersonal" Relationship="Self.FK_tblPersonal_tblDepartment" FromRole="tblDepartment" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonnel" Relationship="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1" FromRole="tblDepartment" ToRole="tblPersonnel" />
         </EntityType>
-        <EntityType Name="tblPersonal">
+        <EntityContainer Name="DepartmentManagementDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" />
+          <EntitySet Name="tblPersonnel" EntityType="DepartmentManagementDBModel.tblPersonnel" />
+          <AssociationSet Name="FK_tblPersonal_tblDepartment1" Association="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1">
+            <End Role="tblDepartment" EntitySet="tblDepartment" />
+            <End Role="tblPersonnel" EntitySet="tblPersonnel" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblPersonnel">
           <Key>
             <PropertyRef Name="p_ID" />
           </Key>
-          <Property Name="p_ID" Type="Int32" Nullable="false" />
-          <Property Name="p_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="p_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="p_Salary" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="p_BirthDate" Type="DateTime" Precision="3" />
           <Property Name="p_Sex" Type="Boolean" />
           <Property Name="p_IsActive" Type="Boolean" />
           <Property Name="p_IsMarried" Type="Boolean" />
           <Property Name="departmentID" Type="Int32" />
-          <NavigationProperty Name="tblDepartment" Relationship="Self.FK_tblPersonal_tblDepartment" FromRole="tblPersonal" ToRole="tblDepartment" />
+          <NavigationProperty Name="tblDepartment" Relationship="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1" FromRole="tblPersonnel" ToRole="tblDepartment" />
         </EntityType>
-        <Association Name="FK_tblPersonal_tblDepartment">
-          <End Role="tblDepartment" Type="Self.tblDepartment" Multiplicity="0..1" />
-          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
+        <Association Name="FK_tblPersonal_tblDepartment1">
+          <End Type="DepartmentManagementDBModel.tblDepartment" Role="tblDepartment" Multiplicity="0..1" />
+          <End Type="DepartmentManagementDBModel.tblPersonnel" Role="tblPersonnel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblDepartment">
               <PropertyRef Name="d_ID" />
             </Principal>
-            <Dependent Role="tblPersonal">
+            <Dependent Role="tblPersonnel">
               <PropertyRef Name="departmentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DepartmentManagementDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" />
-          <EntitySet Name="tblPersonal" EntityType="Self.tblPersonal" />
-          <AssociationSet Name="FK_tblPersonal_tblDepartment" Association="Self.FK_tblPersonal_tblDepartment">
-            <End Role="tblDepartment" EntitySet="tblDepartment" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -106,17 +105,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblPersonal">
-            <EntityTypeMapping TypeName="DepartmentManagementDBModel.tblPersonal">
-              <MappingFragment StoreEntitySet="tblPersonal">
-                <ScalarProperty Name="p_ID" ColumnName="p_ID" />
-                <ScalarProperty Name="p_Name" ColumnName="p_Name" />
-                <ScalarProperty Name="p_Salary" ColumnName="p_Salary" />
-                <ScalarProperty Name="p_BirthDate" ColumnName="p_BirthDate" />
-                <ScalarProperty Name="p_Sex" ColumnName="p_Sex" />
-                <ScalarProperty Name="p_IsActive" ColumnName="p_IsActive" />
-                <ScalarProperty Name="p_IsMarried" ColumnName="p_IsMarried" />
+          <EntitySetMapping Name="tblPersonnel">
+            <EntityTypeMapping TypeName="DepartmentManagementDBModel.tblPersonnel">
+              <MappingFragment StoreEntitySet="tblPersonnel">
                 <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+                <ScalarProperty Name="p_IsMarried" ColumnName="p_IsMarried" />
+                <ScalarProperty Name="p_IsActive" ColumnName="p_IsActive" />
+                <ScalarProperty Name="p_Sex" ColumnName="p_Sex" />
+                <ScalarProperty Name="p_BirthDate" ColumnName="p_BirthDate" />
+                <ScalarProperty Name="p_Salary" ColumnName="p_Salary" />
+                <ScalarProperty Name="p_Name" ColumnName="p_Name" />
+                <ScalarProperty Name="p_ID" ColumnName="p_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

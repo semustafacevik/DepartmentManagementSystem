@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="580dee6f5e7e442fbb0fb2cba9766314" Name="Diagram1">
         <EntityTypeShape EntityType="DepartmentManagementDBModel.tblDepartment" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DepartmentManagementDBModel.tblPersonal" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DepartmentManagementDBModel.tblPersonnel" Width="1.5" PointX="3" PointY="1.625" />
+        <AssociationConnector Association="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

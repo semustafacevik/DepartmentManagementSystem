@@ -1,0 +1,16 @@
+﻿@model DepartmentManagementSystem.Models.EntityFramework.tblDepartment
+@{
+    ViewBag.Title = "DepartmentForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "Department", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.d_Name)
+        @Html.TextBoxFor(m => m.d_Name , new { @class = "form-control"})
+    </div>
+    @Html.HiddenFor(m => m.d_ID)
+    <button type="submit" class="btn btn-success btn-lg btn-block">Save</button>
+}
+

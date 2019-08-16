@@ -26,6 +26,6 @@ namespace DepartmentManagementSystem.Models.EntityFramework
         }
     
         public virtual DbSet<tblDepartment> tblDepartment { get; set; }
-        public virtual DbSet<tblPersonal> tblPersonal { get; set; }
+        public virtual DbSet<tblPersonnel> tblPersonnel { get; set; }
     }
 }

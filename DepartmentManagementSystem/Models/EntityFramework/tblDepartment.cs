@@ -11,19 +11,21 @@ namespace DepartmentManagementSystem.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblDepartment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblDepartment()
         {
-            this.tblPersonal = new HashSet<tblPersonal>();
+            this.tblPersonnel = new HashSet<tblPersonnel>();
         }
     
         public int d_ID { get; set; }
+        [Display(Name = "Department Name")]
         public string d_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPersonal> tblPersonal { get; set; }
+        public virtual ICollection<tblPersonnel> tblPersonnel { get; set; }
     }
 }
