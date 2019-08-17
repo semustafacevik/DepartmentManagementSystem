@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List Of Personnels</h2><br />
+<h2>List Of Personnels</h2>
+<p>@Html.ActionLink("Create New Personnel", "New")</p>
+
 <table class="table table-bordered table-responsive-sm" id="tblPersonnels">
     <thead class="thead-light">
         <tr>
@@ -15,8 +17,7 @@
             <th>Salary</th>
             <th>Age</th>
             <th>Sex</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>Operations</th>
         </tr>
     </thead>
     <tbody>
@@ -29,10 +30,11 @@
             <td>@personnel.p_Salary</td>
             <td>@(DateTime.Now.Year - personnel.p_Birthdate.Value.Year)</td>
             <td>@(personnel.p_Sex == true ? "Female" : "Male")</td>
-            <td>@Html.ActionLink("Update", "Update", new { ID = personnel.p_ID }, new { @class = "btn btn-primary" })</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { ID = personnel.p_ID }, new { @class = "btn btn-danger" })</td>
+            <td>
+                @Html.ActionLink("Update", "Update", new { ID = personnel.p_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { ID = personnel.p_ID })
+            </td>
         </tr>
         }
     </tbody>
-</table><br />
-@Html.ActionLink("New Personnel", "New", null, new { @class = "btn btn-success btn-lg btn-block" })
+</table>

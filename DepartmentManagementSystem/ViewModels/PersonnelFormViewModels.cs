@@ -8,7 +8,7 @@ namespace DepartmentManagementSystem.ViewModels
 {
     public class PersonnelFormViewModels
     {
-        public tblPersonnel personnel { get; set; }
-        public IEnumerable<tblDepartment> departments { get; set; }
+        public tblPersonnel _Personnel { get; set; }
+        public IEnumerable<tblDepartment> _Departments { get; set; }
     }
 }

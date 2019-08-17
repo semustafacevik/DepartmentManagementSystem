@@ -5,14 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List Of Departments</h2><br/>
-<table class="table table-bordered table-responsive-xl" id="tblDepartments">
+<h2>List Of Departments</h2>
+<p>@Html.ActionLink("Create New Department", "New")</p>
+
+<table class="table table-bordered table-responsive-md" id="tblDepartments">
     <thead class="thead-light">
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>Operations</th>
         </tr>
     </thead>
     <tbody>
@@ -21,11 +22,12 @@
             <tr>
                 <td>@department.d_ID</td>
                 <td>@department.d_Name</td>
-                <td><a class="btn btn-primary" href="/Department/Update/@department.d_ID">Update</a></td>
-                <td><a class="btn btn-danger btnDeleteDepartment" data-id="@department.d_ID" data-name="@department.d_Name">Delete</a></td>
+                <td>
+                <a href="/Department/Update/@department.d_ID">Update</a> |
+                <a href="#" class="btnDeleteDepartment" data-id="@department.d_ID" data-name="@department.d_Name">Delete</a>
+                </td>
             </tr>
         }
     </tbody>
-</table><br />
-<a class="btn btn-success btn-lg btn-block" href="/Department/New">New Department</a>
+</table>
 

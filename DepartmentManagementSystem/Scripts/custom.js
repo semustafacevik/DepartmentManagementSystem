@@ -1,6 +1,7 @@
 ﻿$(function () {
     $("#tblDepartments").DataTable()
     $("#tblPersonnels").DataTable()
+    $("#tblUsers").DataTable()
     $("#tblDepartments").on("click", ".btnDeleteDepartment", function () {
         var id = $(this).data("id")
         var name = $(this).data("name") + " Department"

@@ -1,0 +1,48 @@
+﻿@model DepartmentManagementSystem.Models.EntityFramework.tblUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete (@Model.u_Name)</h2>
+<hr />
+<h3>Are you sure you want to delete this?</h3><br />
+<div>   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.u_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.u_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblRole.r_Name)
+        </dt>
+
+        <dd>
+            @Html.Display("role")
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /><br /><br />
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    }
+</div>

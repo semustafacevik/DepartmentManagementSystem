@@ -1,0 +1,41 @@
+﻿@model DepartmentManagementSystem.Models.EntityFramework.tblUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details (@Model.u_Name)</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.u_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.u_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblRole.r_Name)
+        </dt>
+
+        <dd>
+            @Html.Display("role")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.u_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

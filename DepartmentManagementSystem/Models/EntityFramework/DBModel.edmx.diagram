@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="DepartmentManagementDBModel.tblDepartment" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DepartmentManagementDBModel.tblPersonnel" Width="1.5" PointX="3" PointY="1.625" />
         <AssociationConnector Association="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1" />
+        <EntityTypeShape EntityType="DepartmentManagementDBModel.tblRole" Width="1.5" PointX="5.375" PointY="1.125" />
+        <EntityTypeShape EntityType="DepartmentManagementDBModel.tblUser" Width="1.5" PointX="7.625" PointY="0.875" />
+        <AssociationConnector Association="DepartmentManagementDBModel.FK_tblUser_tblRole" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

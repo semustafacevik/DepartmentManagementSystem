@@ -23,8 +23,8 @@ namespace DepartmentManagementSystem.Controllers
         {
             PersonnelFormViewModels vm = new PersonnelFormViewModels()
             {
-                departments = db.tblDepartment.ToList(),
-                personnel = new tblPersonnel()
+                _Departments = db.tblDepartment.ToList(),
+                _Personnel = new tblPersonnel()
             };
 
             return View("PersonnelForm",vm);
@@ -37,8 +37,8 @@ namespace DepartmentManagementSystem.Controllers
             {
                 var model = new PersonnelFormViewModels()
                 {
-                    departments = db.tblDepartment.ToList(),
-                    personnel = personnel
+                    _Departments = db.tblDepartment.ToList(),
+                    _Personnel = personnel
                 };
                 return View("PersonnelForm", model);
 
@@ -57,8 +57,8 @@ namespace DepartmentManagementSystem.Controllers
         {
             var model = new PersonnelFormViewModels()
             {
-                departments = db.tblDepartment.ToList(),
-                personnel = db.tblPersonnel.Find(ID)
+                _Departments = db.tblDepartment.ToList(),
+                _Personnel = db.tblPersonnel.Find(ID)
             };
             if (model == null)
                 return HttpNotFound();
