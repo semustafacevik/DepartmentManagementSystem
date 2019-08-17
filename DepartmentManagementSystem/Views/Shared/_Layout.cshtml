@@ -11,16 +11,22 @@
     <title>_Layout</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/site.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 <body>
     @Html.Partial("_Navbar")
     <div class="container">
         <br />
         @RenderBody()
+        <br /><br />
     </div>
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
     @RenderSection("scripts", false)
+    @Html.Partial("_Footer")
 </body>
 </html>

@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List Of Departments</h2>
-<table class="table table-bordered" id="tblDepartments">
+<h2>List Of Departments</h2><br/>
+<table class="table table-bordered table-responsive-xl" id="tblDepartments">
     <thead class="thead-light">
         <tr>
             <th>ID</th>
@@ -22,10 +22,10 @@
                 <td>@department.d_ID</td>
                 <td>@department.d_Name</td>
                 <td><a class="btn btn-primary" href="/Department/Update/@department.d_ID">Update</a></td>
-                <td><a class="btn btn-danger" href="/Department/Delete/@department.d_ID">Delete</a></td>
+                <td><a class="btn btn-danger btnDeleteDepartment" data-id="@department.d_ID" data-name="@department.d_Name">Delete</a></td>
             </tr>
         }
     </tbody>
-</table>
+</table><br />
 <a class="btn btn-success btn-lg btn-block" href="/Department/New">New Department</a>
 
