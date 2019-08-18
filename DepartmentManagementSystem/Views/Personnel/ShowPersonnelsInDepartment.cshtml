@@ -1,0 +1,24 @@
+﻿@model IEnumerable<DepartmentManagementSystem.Models.EntityFramework.tblPersonnel>
+
+<br /><h3>@ViewBag.Department Department - Personnel List</h3>
+<table class="table table-bordered table-responsive-sm" id="tblShowPersonnelsInDepartment">
+    <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Birthdate</th>
+            <th>Sex</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personnel in Model)
+        {
+            <tr>
+                <td>@personnel.p_Name</td>
+                <td>@personnel.p_Salary</td>
+                <td>@personnel.p_Birthdate.Value.ToShortDateString()</td>
+                <td>@(personnel.p_Sex == true ? "Female" : "Male")</td>
+            </tr>
+        }
+    </tbody>
+</table>

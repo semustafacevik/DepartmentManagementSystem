@@ -24,8 +24,8 @@ namespace DepartmentManagementSystem.Controllers
         {
             PersonnelFormViewModels vm = new PersonnelFormViewModels()
             {
-                _Departments = db.tblDepartment.ToList(),
-                _Personnel = new tblPersonnel()
+                departments = db.tblDepartment.ToList(),
+                personnel = new tblPersonnel()
             };
 
             return View("PersonnelForm",vm);
@@ -38,18 +38,20 @@ namespace DepartmentManagementSystem.Controllers
             {
                 var model = new PersonnelFormViewModels()
                 {
-                    _Departments = db.tblDepartment.ToList(),
-                    _Personnel = personnel
+                    departments = db.tblDepartment.ToList(),
+                    personnel = personnel
                 };
                 return View("PersonnelForm", model);
 
             }
             if (personnel.p_ID == 0)
+            {
+                personnel.p_IsActive = true;
                 db.tblPersonnel.Add(personnel);
-
+            }
             else
                 db.Entry(personnel).State = EntityState.Modified;
-
+      
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -58,8 +60,8 @@ namespace DepartmentManagementSystem.Controllers
         {
             var model = new PersonnelFormViewModels()
             {
-                _Departments = db.tblDepartment.ToList(),
-                _Personnel = db.tblPersonnel.Find(ID)
+                departments = db.tblDepartment.ToList(),
+                personnel = db.tblPersonnel.Find(ID)
             };
             if (model == null)
                 return HttpNotFound();
@@ -74,6 +76,13 @@ namespace DepartmentManagementSystem.Controllers
             db.tblPersonnel.Remove(model);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ShowPersonnelsInDepartment(int ID, string name)
+        {
+            var model = db.tblPersonnel.Where(m => m.departmentID == ID);
+            ViewBag.Department = name;
+            return View(model);
         }
     }
 }
