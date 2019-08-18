@@ -11,6 +11,7 @@ using DepartmentManagementSystem.ViewModels;
 
 namespace DepartmentManagementSystem.Controllers
 {
+    [Authorize(Roles = "1")]
     public class UserController : Controller
     {
         private DepartmentManagementDBEntities db = new DepartmentManagementDBEntities();

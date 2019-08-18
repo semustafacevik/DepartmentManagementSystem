@@ -9,6 +9,7 @@ using System.Data.Entity;
 
 namespace DepartmentManagementSystem.Controllers
 {
+    [Authorize(Roles = "1,2")]
     public class PersonnelController : Controller
     {
         DepartmentManagementDBEntities db = new DepartmentManagementDBEntities();

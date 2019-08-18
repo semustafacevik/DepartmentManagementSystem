@@ -7,6 +7,7 @@ using DepartmentManagementSystem.Models.EntityFramework;
 
 namespace DepartmentManagementSystem.Controllers
 {
+    [Authorize(Roles = "1,2")]
     public class DepartmentController : Controller
     {
         DepartmentManagementDBEntities db = new DepartmentManagementDBEntities();

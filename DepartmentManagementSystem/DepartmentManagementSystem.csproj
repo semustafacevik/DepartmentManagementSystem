@@ -448,6 +448,7 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\DepartmentMSRoleProvider.cs" />
     <Compile Include="ViewModels\PersonnelFormViewModels.cs" />
     <Compile Include="ViewModels\UserRoleViewModel.cs" />
   </ItemGroup>
