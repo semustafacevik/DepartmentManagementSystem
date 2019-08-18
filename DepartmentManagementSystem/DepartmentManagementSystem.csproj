@@ -451,6 +451,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\DepartmentMSRoleProvider.cs" />
+    <Compile Include="ViewModels\MessageViewModels.cs" />
     <Compile Include="ViewModels\PersonnelFormViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -476,6 +477,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\Personnel\ShowPersonnelsInDepartment.cshtml" />
+    <Content Include="Views\Shared\_Message.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

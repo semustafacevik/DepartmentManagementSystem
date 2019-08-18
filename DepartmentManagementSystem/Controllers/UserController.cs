@@ -17,8 +17,10 @@ namespace DepartmentManagementSystem.Controllers
         private DepartmentManagementDBEntities db = new DepartmentManagementDBEntities();
 
         // GET: User
+        [OutputCache(Duration = 30)]
         public ActionResult Index()
         {
+            
             var tblUser = db.tblUser.Include(t => t.tblRole);
             return View(tblUser.ToList());
         }
@@ -57,11 +59,18 @@ namespace DepartmentManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "u_ID,u_Name,u_Password,roleID")] tblUser tblUser)
         {
+            MessageViewModels vm = new MessageViewModels();
+
             if (ModelState.IsValid)
             {
                 db.tblUser.Add(tblUser);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                vm.message = tblUser.u_Name + " create to success.";
+                vm.status = true;
+                vm.url = "/User";
+                vm.linkText = "Back to list";
+                return View("_Message",vm);
             }
 
             ViewBag.role = new SelectList(db.tblRole, "r_ID", "r_Name", tblUser.roleID);

@@ -1,0 +1,15 @@
+﻿@model DepartmentManagementSystem.ViewModels.MessageViewModels
+
+@if (Model.status)
+{
+    <div class="alert alert-success">
+        @Model.message <a href="@Model.url">@Model.linkText</a>
+    </div>
+}
+
+else
+{
+    <div class="alert alert-success">
+        @Model.message <a href="@Model.url">@Model.linkText</a>
+    </div>
+}

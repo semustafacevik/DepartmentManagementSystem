@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List Of Users</h2>
+<h2>List Of Users</h2> 
 <p>@Html.ActionLink("Create User", "Create")</p>
 
 <table class="table table-bordered table-responsive-sm" id="tblUsers">
@@ -33,3 +33,4 @@
         }
     </tbody>
 </table>
+<br /><p><i>Last Output Cache: </i>@DateTime.Now.ToLongTimeString()</p>
