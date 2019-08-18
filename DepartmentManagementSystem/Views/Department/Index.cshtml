@@ -1,12 +1,12 @@
 ﻿@using DepartmentManagementSystem.Models.EntityFramework;
 @model IEnumerable<tblDepartment>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "DMS Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>List Of Departments</h2>
-<p>@Html.ActionLink("Create New Department", "New")</p>
+<p>@Html.ActionLink("Create Department", "New")</p>
 
 <table class="table table-bordered table-responsive-md" id="tblDepartments">
     <thead class="thead-light">
