@@ -82,7 +82,7 @@ namespace DepartmentManagementSystem.Controllers
         {
             var model = db.tblPersonnel.Where(m => m.departmentID == ID);
             ViewBag.Department = name;
-            return View(model);
+            return PartialView(model);
         }
     }
 }

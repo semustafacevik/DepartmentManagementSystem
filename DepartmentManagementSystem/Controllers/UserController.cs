@@ -131,6 +131,12 @@ namespace DepartmentManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public int ShowTotalUser()
+        {
+            return db.tblUser.Count();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

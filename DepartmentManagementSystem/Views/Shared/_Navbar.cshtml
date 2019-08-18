@@ -16,13 +16,18 @@
                 <a class="nav-link" href="/Personnel">Personnels</a>
             </li>
             @if (User.IsInRole("1")) {
-            <li class="nav-item">
-                <a class="nav-link" href="/User">Users</a>
-            </li>
-            } 
+                <li class="nav-item">
+                    <a class="nav-link" href="/User">Users</a>
+                </li>
+             } 
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                @if (User.IsInRole("1")){
+                    <li class="nav-item disabled">
+                        <a class="nav-link" href="/User">Total User: @{Html.RenderAction("ShowTotalUser", "User");}</a>
+                    </li>
+                }
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i>Welcome @User.Identity.Name</i>
