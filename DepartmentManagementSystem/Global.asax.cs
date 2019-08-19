@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DepartmentManagementSystem.Filters;
 
 namespace DepartmentManagementSystem
 {
@@ -14,9 +15,13 @@ namespace DepartmentManagementSystem
         protected void Application_Start()
         {
             GlobalFilters.Filters.Add(new AuthorizeAttribute());
+            GlobalFilters.Filters.Add(new ElmahExceptionFilter());
+            GlobalFilters.Filters.Add(new HandleErrorAttribute());
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
     }
 }

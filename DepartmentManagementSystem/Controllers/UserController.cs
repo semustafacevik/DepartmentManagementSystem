@@ -20,7 +20,6 @@ namespace DepartmentManagementSystem.Controllers
         [OutputCache(Duration = 30)]
         public ActionResult Index()
         {
-            
             var tblUser = db.tblUser.Include(t => t.tblRole);
             return View(tblUser.ToList());
         }
