@@ -30,7 +30,10 @@ namespace DepartmentManagementSystem.Controllers
                 return View("DepartmentForm");
 
             if (department.d_ID == 0)
+            {
+                department.d_IsActive = true;
                 db.tblDepartment.Add(department);
+            }
 
             else
             {
@@ -53,13 +56,15 @@ namespace DepartmentManagementSystem.Controllers
             return View("DepartmentForm", model);
         }
         
-        public ActionResult Delete(int ID)
+        public ActionResult DeleteOrActivate(int ID)
         {
             var model = db.tblDepartment.Find(ID);
             if (model == null)
                 return HttpNotFound();
 
-            db.tblDepartment.Remove(model);
+            bool activityStatus = (model.d_IsActive == true) ? false : true;
+            model.d_IsActive = activityStatus;
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

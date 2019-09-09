@@ -11,6 +11,7 @@
           </Key>
           <Property Name="d_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="d_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblPersonnel">
           <Key>
@@ -89,6 +90,7 @@
           <Property Name="d_ID" Type="Int32" Nullable="false" />
           <Property Name="d_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tblPersonnel" Relationship="DepartmentManagementDBModel.FK_tblPersonal_tblDepartment1" FromRole="tblDepartment" ToRole="tblPersonnel" />
+          <Property Name="d_IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DepartmentManagementDBEntities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" />
@@ -168,6 +170,7 @@
           <EntitySetMapping Name="tblDepartment">
             <EntityTypeMapping TypeName="DepartmentManagementDBModel.tblDepartment">
               <MappingFragment StoreEntitySet="tblDepartment">
+                <ScalarProperty Name="d_IsActive" ColumnName="d_IsActive" />
                 <ScalarProperty Name="d_ID" ColumnName="d_ID" />
                 <ScalarProperty Name="d_Name" ColumnName="d_Name" />
               </MappingFragment>

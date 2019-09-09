@@ -1,5 +1,4 @@
-﻿@using DepartmentManagementSystem.Models.EntityFramework;
-@model IEnumerable<tblDepartment>
+﻿@model IEnumerable<DepartmentManagementSystem.Models.EntityFramework.tblDepartment>
 @{
     ViewBag.Title = "DMS Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,17 +16,29 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var department in Model)
+        @foreach (var department in Model)  
         {
-            <tr>
-                <td>@department.d_ID</td>
+        <tr>
+            <td>@department.d_ID</td>
+            @if (department.d_IsActive)
+            {
                 <td>@department.d_Name</td>
                 <td>
-                <a href="/Department/Update/@department.d_ID">Update</a> |
-                <a href="#" class="btnDeleteDepartment" data-id="@department.d_ID" data-name="@department.d_Name">Delete</a> |
-                @Ajax.ActionLink("Show Personnels", "ShowPersonnelsInDepartment", "Personnel", new { ID = department.d_ID, name = department.d_Name }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "ShowPerInDep" })
+                    @Ajax.ActionLink("Show Personnels", "ShowPersonnelsInDepartment", "Personnel", new { ID = department.d_ID, name = department.d_Name }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "ShowPerInDep" }) |
+                    <a href="/Department/Update/@department.d_ID">Update</a> |
+                    <a href="#" class="linkDelActDepartment" data-id="@department.d_ID" data-name="@department.d_Name">Delete</a>
                 </td>
-            </tr>
+            }
+            else
+            {
+                <td class="text-danger">@department.d_Name</td>
+                <td>
+                    @Ajax.ActionLink("Show Personnels", "ShowPersonnelsInDepartment", "Personnel", new { ID = department.d_ID, name = department.d_Name }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "ShowPerInDep" }) |
+                    <a href="/Department/Update/@department.d_ID">Update</a> |
+                    <a href="#" class="linkDelActDepartment" data-id="@department.d_ID" data-name="@department.d_Name">Activate</a>
+                </td>
+            }
+        </tr>
         }
     </tbody>
 </table>

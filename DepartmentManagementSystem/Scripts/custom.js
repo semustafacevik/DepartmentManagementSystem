@@ -3,24 +3,24 @@
     $("#tblPersonnels").DataTable()
     $("#tblUsers").DataTable()
     $("#tblShowPersonnelsInDepartment").DataTable()
-    $("#tblDepartments").on("click", ".btnDeleteDepartment", function () {
+
+    $("#tblDepartments").on("click", ".linkDelActDepartment", function () {
         var id = $(this).data("id")
         var name = $(this).data("name") + " Department"
-        var btn = $(this)
-        bootbox.confirm(name.bold().italics() + " will be deleted! Are you sure?", function (result) {
+        var linkDelAct = $(this)
+        bootbox.confirm(name.bold().italics() + " will be " + linkDelAct.text().toLowerCase() + "d! Are you sure?", function (result) {
             if (result) {
                 $.ajax({
                     type: "GET",
-                    url: "Department/Delete/" + id,
+                    url: "Department/DeleteOrActivate/" + id,
                     success: function () {
-                        btn.parent().parent().remove()
+                        var text_delAct = (linkDelAct.text() == "Delete") ? "Activate" : "Delete"
+                        linkDelAct.text(text_delAct)
                     }
-
                 })
             }
         })
     })
-
 })
 
 function CheckDateTypeIsValid(dateElement) {
