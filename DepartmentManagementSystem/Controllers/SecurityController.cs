@@ -32,7 +32,7 @@ namespace DepartmentManagementSystem.Controllers
 
             else
             {
-                ViewBag.Message = "XXXXX";
+                ViewBag.Message = "The usurname or password is incorrect! Please try again.";
                 return View();
             }
         }
